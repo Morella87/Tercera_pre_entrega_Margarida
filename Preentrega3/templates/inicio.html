@@ -1,0 +1,36 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <!-- colocamos lo que va a cambiar de la vista de inicio y el buscar-->
+
+
+    <h3>Ingrese numero de camada para buscar:</h3>
+
+    <form action="/Preentrega3/buscar/" method="GET">
+
+        <input type="number" name="camada" id="camada">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+    {% if cursos %}
+    <p>Estamos  buscando el: {{camada}}</p>
+
+    <ul>
+        {% for curso in cursos%}
+            <li>{{curso.nombre}}</li>
+            <li>{{curso.camada}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No hay datos con esa descripcion.</p>
+    {% endif %}
+
+{% endblock %}
+<p style="color: red">{{respuesta}}</p>
+
+
